@@ -23,7 +23,7 @@ services:
     volumes:
       - ./server:/etc/consul.d/server
     networks:
-      - local-fcred-ntk
+      - local-ntk
 
   consul2:
     image: consul:1.6.1
@@ -31,7 +31,7 @@ services:
     volumes:
       - ./agent:/etc/consul.d/agent
     networks:
-      - local-fcred-ntk
+      - local-ntk
 
   consul3:
     image: consul:1.6.1
@@ -39,72 +39,8 @@ services:
     volumes:
       - ./agent:/etc/consul.d/agent
     networks:
-      - local-fcred-ntk
-
-  rabbitmq01:
-    image: fundacred/rabbitmq:latest
-    ports:
-      - target: 5672
-        published: 30000
-        mode: host
-      - target: 15672
-        published: 30010
-        mode: host
-    environment:
-      - RABBITMQ_ERLANG_COOKIE='rabbitmq'
-    networks:
-      - local-fcred-ntk
-
-  rabbitmq02:
-    image: fundacred/rabbitmq:latest
-    ports:
-      - target: 5672
-        published: 30001
-        mode: host
-      - target: 15672
-        published: 30011
-        mode: host
-    environment:
-      - RABBITMQ_ERLANG_COOKIE='rabbitmq'
-    networks:
-      - local-fcred-ntk
-
-  # http://localhost:9090/
-  proxy-server:
-    image: fundacred/proxy-server:latest
-    ports:
-      - target: 9090
-        published: 9090
-        mode: host
-    depends_on:
-      - consul
-    environment:
-      - PROFILE=test
-      - INSTANCE_ID=1
-      - CONFIG_CLOUD_URI=http://10.10.102.30:8888/config # http://10.10.102.30:8888/config
-      - CONFIG_CLOUD_USERNAME=fundacred
-      - CONFIG_CLOUD_PASSWORD=fundacred
-      - TZ=America/Sao_Paulo
-      - JAVA_OPTIONS=-XX:-UseContainerSupport -XX:InitialRAMPercentage=5 -XX:MaxRAMPercentage=15 -XX:ActiveProcessorCount=1
-    networks:
-      - local-fcred-ntk
-
-  # http://localhost:9090/legacy/swagger-ui.html
-#  legado-api:
-#    image: fundacred/legado-api:latest
-#    depends_on:
-#      - consul
-#    environment:
-#      - PROFILE=test
-#      - INSTANCE_ID=1
-#      - CONFIG_CLOUD_URI=https://config.fundacred.org.br/config # http://10.10.102.30:8888/config
-#      - CONFIG_CLOUD_USERNAME=fundacred
-#      - CONFIG_CLOUD_PASSWORD=fundacred
-#      - TZ=America/Sao_Paulo
-#      - JAVA_OPTIONS=-XX:-UseContainerSupport -XX:InitialRAMPercentage=5 -XX:MaxRAMPercentage=15 -XX:ActiveProcessorCount=1
-#    networks:
-#      - local-fcred-ntk
+      - local-ntk
 
 networks:
-  local-fcred-ntk:
+  local-ntk:
     driver: bridge
