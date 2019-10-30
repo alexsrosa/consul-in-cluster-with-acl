@@ -1,0 +1,18 @@
+{
+  "server": true,
+  "enable_script_checks": true,
+  "ui": true,
+  "bootstrap_expect": 3,
+  "acl": {
+    "enabled": true,
+    "default_policy": "deny",
+    "tokens": {
+      "master": "F465F54E-9F4F-4984-B6F4-24BB4A646C96"
+    }
+  },
+  "log_level": "INFO",
+  "domain": "consul",
+  "leave_on_terminate": false,
+  "skip_leave_on_interrupt": true,
+  "rejoin_after_leave": true
+}
