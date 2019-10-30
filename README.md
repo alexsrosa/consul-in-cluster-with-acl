@@ -9,3 +9,5 @@ https://github.com/tsurubee/consul-acl-playground
 https://www.consul.io/docs/commands/acl.html
 
 https://imaginea.gitbooks.io/consul-devops-handbook/content/
+
+https://www.marcolancini.it/2018/blog-offensive-infrastructure-consul/
